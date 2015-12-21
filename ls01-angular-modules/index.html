@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html ng-app = "myapp">
+<head></head>
+<body>
+<div class="Container" ng-controller="SimpleController">
+<div ng-view></div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+
+<script>
+  var myapp = angular.module('myapp',['ngRoute']);
+  var controllers = {};
+  controllers.SimpleController = function($scope) {
+      $scope.names = ['Dave','Napur','Heedy'];
+  };
+  myapp.controller(controllers);
+
+  myapp.config(['$routeProvider',function($routeProvider) {
+        $routeProvider
+                .when('/',
+                {
+                  controller: 'SimpleController',
+                  templateUrl: 'view1.html'
+                })
+                .when('/test',
+                {
+                  controller: 'SimpleController',
+                  templateUrl: 'view2.html'
+                })
+                .otherwise({ redirectTo: '/' });
+  }]);
+
+
+</script>
+</body>
+</html>
