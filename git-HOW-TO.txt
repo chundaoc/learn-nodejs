@@ -1,0 +1,5 @@
+echo "# learn nodejs" >> README.md
+git init
+git remote add origin https://github.com/chundaoc/learn-nodejs.git
+git push -u origin master
+
